@@ -32,15 +32,15 @@ function Control() {
           <ul className="dropdown-menu" aria-labelledby="dropdownMenu1">
             <li>
               <a role="button">
-                <span class="fa fa-sort-alpha-asc pr-5">Tên A-Z</span>
+                <span className="fa fa-sort-alpha-asc pr-5">Tên A-Z</span>
               </a>
             </li>
             <li>
               <a role="button">
-                <span class="fa fa-sort-alpha-desc pr-5">Tên Z-A</span>
+                <span className="fa fa-sort-alpha-desc pr-5">Tên Z-A</span>
               </a>
             </li>
-            <li role="separator" class="divider"></li>
+            <li role="separator" className="divider"></li>
             <li>
               <a role="button">Trạng thái đang thực hiện</a>
             </li>

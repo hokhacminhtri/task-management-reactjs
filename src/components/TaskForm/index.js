@@ -1,7 +1,6 @@
 import React from "react";
 
 function TaskForm() {
-  console.log("TaskForm");
   return (
     <div className="panel panel-warning">
       <div className="panel-heading">
