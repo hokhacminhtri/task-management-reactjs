@@ -1,7 +1,17 @@
 import React from "react";
 import TaskItem from "../TaskItem";
 
-function TaskList(myTasks) {
+function TaskList(tasks) {
+  let myTasks = tasks;
+
+  let elementTasks = Object.values(myTasks)[0].map((task, index) => {
+    return <TaskItem key={index} />;
+  });
+
+  // console.log("tasks-list", myTasks);
+  // console.log("tasks-list", Object.values(myTasks)[0]);
+  console.log(elementTasks);
+
   return (
     <div className="row mt-5">
       <div className="col-xs-12 col-sm-12 col-md-12 col-lg-12">
@@ -29,7 +39,7 @@ function TaskList(myTasks) {
               </td>
               <td></td>
             </tr>
-            <TaskItem />
+            {elementTasks}
           </tbody>
         </table>
       </div>

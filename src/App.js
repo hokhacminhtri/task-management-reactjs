@@ -5,7 +5,7 @@ import TaskForm from "./components/TaskForm";
 import TaskList from "./components/TaskList";
 
 function App() {
-  const [tasks, setTasks] = useState("");
+  const [tasks, setTasks] = useState([]);
 
   useEffect(() => {
     console.log("effect");
@@ -54,8 +54,8 @@ function App() {
     return key() + key() + key() + key() + key() + key() + key() + key();
   };
 
-  const { myTasks } = tasks;
-  // console.log(tasks, "ahihi");
+  const myTasks = tasks;
+  console.log(myTasks, "my-tasks");
 
   return (
     <div className="container">
