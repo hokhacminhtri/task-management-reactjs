@@ -22,17 +22,17 @@ function App() {
       {
         id: onGenerateId(),
         name: "Ăn",
-        status: true,
+        status: true, //da hoan thanh
       },
       {
         id: onGenerateId(),
         name: "Ngủ",
-        status: false,
+        status: false, // dang thuc hien
       },
       {
         id: onGenerateId(),
         name: "Code",
-        status: true,
+        status: true, // da hoan thanh
       },
     ];
     // console.log(tasks);

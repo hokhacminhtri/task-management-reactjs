@@ -1,12 +1,20 @@
 import React from "react";
 
-function TaskItem() {
+function TaskItem(tasks) {
+  let { task, index } = tasks;
+  console.log("object", task, index);
   return (
     <tr>
-      <td>1</td>
-      <td>Học lập trình ReactJS</td>
+      <td>{index}</td>
+      <td>{task.name}</td>
       <td className="text-center">
-        <span className="label label-success">Đang thực hiện</span>
+        <span
+          className={
+            task.status === true ? "label label-danger" : "label label-success"
+          }
+        >
+          {task.status === true ? "Đã hoàn thành" : "Đang thực hiện"}
+        </span>
       </td>
       <td className="text-center">
         <button type="button" className="btn btn-warning">

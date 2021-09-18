@@ -5,7 +5,7 @@ function TaskList(tasks) {
   let myTasks = tasks;
 
   let elementTasks = Object.values(myTasks)[0].map((task, index) => {
-    return <TaskItem key={index} />;
+    return <TaskItem key={task.id} index={index} task={task} />;
   });
 
   // console.log("tasks-list", myTasks);
