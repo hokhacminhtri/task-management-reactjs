@@ -6,6 +6,7 @@ import TaskList from "./components/TaskList";
 
 function App() {
   const [tasks, setTasks] = useState([]);
+  const [displayForm, setDisplayForm] = useState(false); // dong mo task form
 
   useEffect(() => {
     console.log("effect");
@@ -57,6 +58,13 @@ function App() {
   const myTasks = tasks;
   console.log(myTasks, "my-tasks");
 
+  // dong mo task form
+  let elementTaskForm = displayForm ? <TaskForm /> : "";
+
+  const onToggleForm = () => {
+    setDisplayForm(!displayForm);
+  };
+
   return (
     <div className="container">
       <div className="text-center">
@@ -64,12 +72,25 @@ function App() {
         <hr />
       </div>
       <div className="row">
-        <div className="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+        <div
+          className={displayForm ? "col-xs-4 col-sm-4 col-md-4 col-lg-4" : ""}
+        >
           {/* From them cong viec */}
-          <TaskForm />
+          {/* <TaskForm /> */}
+          {elementTaskForm}
         </div>
-        <div className="col-xs-8 col-sm-8 col-md-8 col-lg-8">
-          <button type="button" className="btn btn-primary">
+        <div
+          className={
+            displayForm
+              ? "col-xs-8 col-sm-8 col-md-8 col-lg-8"
+              : "col-xs-12 col-sm-12 col-md-12 col-lg-12"
+          }
+        >
+          <button
+            type="button"
+            className="btn btn-primary"
+            onClick={onToggleForm}
+          >
             <span className="fa fa-plus mr-5"></span> Thêm công việc
           </button>
           <button
