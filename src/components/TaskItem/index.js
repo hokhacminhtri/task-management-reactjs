@@ -2,7 +2,7 @@ import React from "react";
 
 function TaskItem(tasks) {
   let { task, index } = tasks;
-  console.log("object", task, index);
+  // console.log("object", task, index);
   return (
     <tr>
       <td>{index}</td>
@@ -13,7 +13,7 @@ function TaskItem(tasks) {
             task.status === true ? "label label-danger" : "label label-success"
           }
         >
-          {task.status === true ? "Đã hoàn thành" : "Đang thực hiện"}
+          {task.status === true ? "Đang thực hiện" : "Ẩn"}
         </span>
       </td>
       <td className="text-center">

@@ -33,7 +33,7 @@ function TaskList(tasks) {
               <td>
                 <select className="form-control">
                   <option value="-1">Tất Cả</option>
-                  <option value="0">Chưa thưc hiên</option>
+                  <option value="0">Ẩn</option>
                   <option value="1">Đang thực hiện</option>
                 </select>
               </td>

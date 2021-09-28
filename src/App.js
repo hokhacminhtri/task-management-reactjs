@@ -23,17 +23,17 @@ function App() {
       {
         id: onGenerateId(),
         name: "Ăn",
-        status: true, //da hoan thanh
+        status: true, // thuc hien
       },
       {
         id: onGenerateId(),
         name: "Ngủ",
-        status: false, // dang thuc hien
+        status: false, // ẩn
       },
       {
         id: onGenerateId(),
         name: "Code",
-        status: true, // da hoan thanh
+        status: true, // thuc hien
       },
     ];
     // console.log(tasks);
@@ -56,10 +56,28 @@ function App() {
   };
 
   const myTasks = tasks;
-  console.log(myTasks, "my-tasks");
+  // console.log(myTasks, "my-tasks");
+
+  // submit them cong viec
+  const onSubmit = (data) => {
+    let task = {
+      id: onGenerateId(),
+      name: data.name,
+      status: data.status,
+    };
+
+    // them task moi vao mang tasks
+    let addNewTask = (tasks) => [...tasks, task];
+
+    // them task moi vao state
+    setTasks(addNewTask(tasks));
+
+    // luu vao localStorage
+    localStorage.setItem("tasks", JSON.stringify(addNewTask(tasks)));
+  };
 
   // dong mo task form
-  let elementTaskForm = displayForm ? <TaskForm /> : "";
+  let elementTaskForm = displayForm ? <TaskForm onSubmit={onSubmit} /> : "";
 
   const onToggleForm = () => {
     setDisplayForm(!displayForm);

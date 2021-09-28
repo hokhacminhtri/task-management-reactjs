@@ -8,7 +8,7 @@ function Control() {
           <input
             type="text"
             className="form-control"
-            placeholder="Nhap từ khóa cần tìm"
+            placeholder="Nhập từ khóa cần tìm"
           ></input>
           <span className="input-group-btn">
             <button className="btn btn-primary" type="button">
