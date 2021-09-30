@@ -58,7 +58,7 @@ function App() {
     return key() + key() + key() + key() + key() + key() + key() + key();
   };
 
-  const myTasks = tasks;
+  let myTasks = tasks;
   // console.log(myTasks, "my-tasks");
 
   // ---------- submit them cong viec ----------
@@ -87,6 +87,41 @@ function App() {
   // ---------- hien thi form va them task ----------
   // --------------------------------------------------
   let elementTaskForm = displayForm ? <TaskForm onSubmit={onSubmitForm} /> : "";
+
+  // ---------- tim id cua cong viec ----------
+  // --------------------------------------------------
+  const findIndex = (id) => {
+    let result = -1; // index tim duoc
+    myTasks.forEach((task, index) => {
+      if (task.id === id) {
+        console.log(index, "indexxx");
+        result = index;
+      }
+    });
+    return result;
+  };
+
+  // ---------- cap nhat trang thai cua cong viec ----------
+  // ---------- lay id TaskItem --> TaskList --> App.js ----------
+  // --------------------------------------------------
+  const onUpdateStatus = (id) => {
+    console.log("id lay duoc", id);
+    let index = findIndex(id);
+    console.log(index, "index");
+    if (index !== -1) {
+      myTasks[index].status = !myTasks[index].status;
+      console.log(myTasks[index].status, "indexx");
+
+      setTasks(myTasks);
+      localStorage.setItem("tasks", JSON.stringify(myTasks));
+    }
+  };
+
+  // useEffect(() => {
+  //   setTimeout(() => {
+  //     setTasks(myTasks);
+  //   }, 3000);
+  // }, [myTasks]);
 
   return (
     <div className="container">
@@ -129,7 +164,7 @@ function App() {
           {/* Tim kiem va Sap xep */}
           <Control />
           {/* Danh sách các task */}
-          <TaskList tasks={myTasks} />
+          <TaskList tasks={myTasks} onUpdateStatus={onUpdateStatus} />
           {/* <TaskList /> */}
         </div>
       </div>

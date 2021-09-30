@@ -2,7 +2,12 @@ import React from "react";
 
 function TaskItem(tasks) {
   let { task, index } = tasks;
-  // console.log("object", task, index);
+
+  const onUpdateStatus = () => {
+    // console.log(tasks.task.id);
+    tasks.onUpdateStatus(tasks.task.id);
+  };
+
   return (
     <tr>
       <td>{index}</td>
@@ -12,6 +17,7 @@ function TaskItem(tasks) {
           className={
             task.status === true ? "label label-danger" : "label label-success"
           }
+          onClick={onUpdateStatus}
         >
           {task.status === true ? "Đang thực hiện" : "Ẩn"}
         </span>
