@@ -16,7 +16,8 @@ function App() {
     }
   }, []);
 
-  // generate data
+  // ---------- generate data ----------
+  // --------------------------------------------------
   const onGenerateData = () => {
     console.log("generate data");
     let tasks = [
@@ -43,14 +44,16 @@ function App() {
     localStorage.setItem("tasks", JSON.stringify(tasks));
   };
 
-  // key tao unique id
+  // ---------- key tao unique id ----------
+  // --------------------------------------------------
   const key = () => {
     return Math.floor((1 + Math.random()) * 0x10000)
       .toString(16)
       .substring(1);
   };
 
-  // ham tao unique id
+  // ---------- ham tao unique id ----------
+  // --------------------------------------------------
   const onGenerateId = () => {
     return key() + key() + key() + key() + key() + key() + key() + key();
   };
@@ -58,8 +61,9 @@ function App() {
   const myTasks = tasks;
   // console.log(myTasks, "my-tasks");
 
-  // submit them cong viec
-  const onSubmit = (data) => {
+  // ---------- submit them cong viec ----------
+  // --------------------------------------------------
+  const onSubmitForm = (data) => {
     let task = {
       id: onGenerateId(),
       name: data.name,
@@ -76,12 +80,13 @@ function App() {
     localStorage.setItem("tasks", JSON.stringify(addNewTask(tasks)));
   };
 
-  // dong mo task form
-  let elementTaskForm = displayForm ? <TaskForm onSubmit={onSubmit} /> : "";
-
   const onToggleForm = () => {
     setDisplayForm(!displayForm);
   };
+
+  // ---------- hien thi form va them task ----------
+  // --------------------------------------------------
+  let elementTaskForm = displayForm ? <TaskForm onSubmit={onSubmitForm} /> : "";
 
   return (
     <div className="container">
@@ -106,14 +111,17 @@ function App() {
         >
           <button
             type="button"
-            className="btn btn-primary"
+            className={!displayForm ? "btn btn-primary" : "btn btn-danger"}
             onClick={onToggleForm}
           >
-            <span className="fa fa-plus mr-5"></span> Thêm công việc
+            <span
+              className={!displayForm ? "fa fa-plus mr-5" : "fa fa-times mr-5"}
+            ></span>{" "}
+            {!displayForm ? "Thêm công việc" : "Đóng form"}
           </button>
           <button
             type="button"
-            className="btn btn-danger"
+            className="btn btn-warning"
             onClick={onGenerateData}
           >
             Generate Data

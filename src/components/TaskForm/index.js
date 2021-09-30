@@ -3,6 +3,7 @@ import React, { useState } from "react";
 function TaskForm(props) {
   const [name, setName] = useState("");
   const [status, setStatus] = useState(false);
+  // const [displayForm, setDisplayForm] = useState(true); // dong mo task form
 
   // bat su kien cho ten cong viec
   const onChangeName = (event) => {
@@ -40,6 +41,13 @@ function TaskForm(props) {
     props.onSubmit(obj);
   };
 
+  // xoa gia tri cua form "Them cong viec"
+  const onClearForm = () => {
+    // xoa cac gia tri dang co cua state
+    setName("");
+    setStatus(false);
+  };
+
   return (
     <div className="panel panel-warning">
       <div className="panel-heading">
@@ -73,7 +81,11 @@ function TaskForm(props) {
             <button type="submit" className="btn btn-warning">
               Thêm
             </button>
-            <button type="button" className="btn btn-danger">
+            <button
+              type="button"
+              className="btn btn-danger"
+              onClick={onClearForm}
+            >
               Hủy bỏ
             </button>
           </div>
