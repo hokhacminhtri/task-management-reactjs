@@ -11,6 +11,7 @@ function TaskList(tasks) {
         index={index}
         task={task}
         onUpdateStatus={tasks.onUpdateStatus}
+        onRemoveTask={tasks.onRemoveTask}
       />
     );
   });

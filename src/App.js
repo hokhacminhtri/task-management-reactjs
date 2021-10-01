@@ -106,7 +106,7 @@ function App() {
   // ---------- lay id TaskItem --> TaskList --> App.js ----------
   // --------------------------------------------------
   const onUpdateStatus = (id) => {
-    console.log("id lay duoc", id);
+    // console.log("id lay duoc", id);
     let index = findIndex(id);
     console.log(index, "index");
     if (index !== -1) {
@@ -117,6 +117,24 @@ function App() {
       localStorage.setItem("tasks", JSON.stringify(myTasks));
 
       setUpdateStatus(!updateStatus); // state dung de re-render component TaskList
+    }
+  };
+
+  // ---------- xoa task khoi danh sach TaskList ----------
+  // --------------------------------------------------
+  const onRemoveTask = (id) => {
+    // tim index trong danh sach task --> xoa task khoi TaskList
+    let index = findIndex(id);
+    console.log(index, "index");
+    if (index !== -1) {
+      myTasks.splice(index, 1);
+
+      setTasks(myTasks);
+      localStorage.setItem("tasks", JSON.stringify(myTasks));
+
+      setUpdateStatus(!updateStatus); // state dung de re-render component TaskList
+
+      setDisplayForm(false); // dong form sau khi thuc hien xoa task
     }
   };
 
@@ -161,7 +179,11 @@ function App() {
           {/* Tim kiem va Sap xep */}
           <Control />
           {/* Danh sách các task */}
-          <TaskList tasks={myTasks} onUpdateStatus={onUpdateStatus} />
+          <TaskList
+            tasks={myTasks}
+            onUpdateStatus={onUpdateStatus}
+            onRemoveTask={onRemoveTask}
+          />
           {/* <TaskList /> */}
         </div>
       </div>

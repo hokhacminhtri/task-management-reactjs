@@ -3,9 +3,16 @@ import React from "react";
 function TaskItem(tasks) {
   let { task, index } = tasks;
 
+  // ---------- cap nhat trang thai cua task ----------
+  // --------------------------------------------------
   const onUpdateStatus = () => {
-    // console.log(tasks.task.id);
     tasks.onUpdateStatus(tasks.task.id);
+  };
+
+  // ---------- xoa task khoi danh sach TaskList ----------
+  // --------------------------------------------------
+  const onRemoveTask = () => {
+    tasks.onRemoveTask(tasks.task.id);
   };
 
   return (
@@ -27,7 +34,7 @@ function TaskItem(tasks) {
           <span className="fa fa-pencil mr-5"></span>Sửa
         </button>
         &nbsp;
-        <button type="button" className="btn btn-danger">
+        <button type="button" className="btn btn-danger" onClick={onRemoveTask}>
           <span className="fa fa-trash mr-5"></span>Xóa
         </button>
       </td>
