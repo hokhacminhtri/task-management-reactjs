@@ -7,6 +7,7 @@ import TaskList from "./components/TaskList";
 function App() {
   const [tasks, setTasks] = useState([]);
   const [displayForm, setDisplayForm] = useState(false); // dong mo task form
+  const [updateStatus, setUpdateStatus] = useState(false); // state dung de re-render component TaskList
 
   useEffect(() => {
     console.log("effect");
@@ -114,14 +115,10 @@ function App() {
 
       setTasks(myTasks);
       localStorage.setItem("tasks", JSON.stringify(myTasks));
+
+      setUpdateStatus(!updateStatus); // state dung de re-render component TaskList
     }
   };
-
-  // useEffect(() => {
-  //   setTimeout(() => {
-  //     setTasks(myTasks);
-  //   }, 3000);
-  // }, [myTasks]);
 
   return (
     <div className="container">
